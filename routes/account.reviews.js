@@ -85,7 +85,7 @@ router.post("/regist/execute", async (req, res, next) => {
   var error = validateReviewData(req);
   var review = createReviewData(req);
   var { shopId, shopName } = req.body;
-  var userId = "1";     // TODO: ログイン実装後に更新
+  var userId = req.user.id;
   var transaction;
 
   if (error) {
@@ -118,7 +118,7 @@ router.post("/regist/execute", async (req, res, next) => {
 
   res.redirect(`/account/reviews/regist/complete?shopId=${shopId}`);
 });
-// postだとリロードすると二重登録されるおそれあるので、redirect→get に変更
+
 router.get("/regist/complete", (req, res) => {
   res.render("./account/reviews/regist-complete.ejs", { shopId: req.query.shopId });
 });

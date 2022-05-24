@@ -1,3 +1,4 @@
+// ブラウザの使用が変わりregist-confirm.ejsのhistory.fowardも必要
 var window_onpopstate = function (event) {
   history.pushState(null, null, null);
 };
