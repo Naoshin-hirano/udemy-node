@@ -42,13 +42,12 @@ app.use(session({
     password: dbconfig.PASSWORD,
     database: dbconfig.DATABASE
   }),
-  // secureがtrueになっているとhttpsにしないとsidなどが開発者ツールに見えない
   cookie: {
     secure: IS_PRODUCTION
   },
   secret: appconfig.security.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   name: "sid"
 }));
 app.use(express.urlencoded({ extended: true }));
